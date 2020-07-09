@@ -3,13 +3,12 @@ services:
     influxdb:
         container_name: metricsdb
         network_mode: host
-        command: bash -c ""
         volumes:
             - '/var/influxdb:/data'
         image: influxdb
     telegraf:
-        network_mode: host
         container_name: telegraf
+        network_mode: host
         volumes:
             - '$PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro'
         image: telegraf
@@ -21,8 +20,8 @@ services:
         container_name: grafana-storage
         image: busybox
     grafana:
-        network_mode: host
         container_name: grafana
+        network_mode: host
         image: grafana/grafana
         depends_on:
           - influxdb
