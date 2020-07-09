@@ -25,6 +25,9 @@ Run `docker-compose logs` to check container logs.
 
 ### Grafana Setup
 
+Grafana might need permission to write to the mounted directory for it's data.
+Run `sudo chown -R 472:472 /tmp/grafana/` where `/tmp/grafana` is the default directory where data is stored on the host machine.
+
 Once the container processes have started, you can access the Grafana dashboard at http://localhost:3000 .
 
 Default Grafana credentials are `admin/admin`.
