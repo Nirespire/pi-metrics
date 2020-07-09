@@ -1,29 +1,23 @@
-version: '3.8'
+version: "3.8"
 services:
-    influxdb:
-        container_name: metricsdb
-        network_mode: host
-        volumes:
-            - '/var/influxdb:/data'
-        image: influxdb
-    telegraf:
-        container_name: telegraf
-        network_mode: host
-        volumes:
-            - '$PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro'
-        image: telegraf
-        depends_on:
-          - influxdb
-    busybox:
-        volumes:
-            - /var/lib/grafana
-        container_name: grafana-storage
-        image: busybox
-    grafana:
-        container_name: grafana
-        network_mode: host
-        image: grafana/grafana
-        depends_on:
-          - influxdb
-          - busybox
-        
+  influxdb:
+    container_name: metricsdb
+    volumes:
+      - "/tmp/influxdb:/data"
+    image: influxdb
+  telegraf:
+    container_name: telegraf
+    volumes:
+      - "$PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+    image: telegraf
+    depends_on:
+      - influxdb
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    volumes:
+      - "/tmp/grafana:/var/lib/grafana"
+    ports:
+      - 3000:3000
+    depends_on:
+      - influxdb
