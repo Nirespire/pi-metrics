@@ -16,8 +16,10 @@ services:
     container_name: grafana
     image: grafana/grafana
     volumes:
-      - "/tmp/grafana:/var/lib/grafana"
+      - "grafana-storage:/var/lib/grafana"
     ports:
       - 3000:3000
     depends_on:
       - influxdb
+volumes:
+  grafana-storage:
