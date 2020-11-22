@@ -1,4 +1,4 @@
-# Pi Metrics 🥧📊 
+# Pi Metrics 🥧
 
 Simple system metrics collection and monitoring using [InfuxDB](https://www.influxdata.com/), [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/), and [Grafana](https://grafana.com/) running in [Docker](https://www.docker.com/) using [Docker Compose](https://docs.docker.com/compose/).
 
@@ -17,7 +17,11 @@ Simple system metrics collection and monitoring using [InfuxDB](https://www.infl
 docker-compose up -d
 ```
 
-This will create a network called `pi-metrics_default` and start 3 containers running on that network.
+This will create a network called `pi-metrics_default` and start 3 containers running on that network with the following images:
+
+- influxdb
+- telegraf
+- grafana/grafana
 
 Run `docker ps` to check the container statuses.
 
@@ -26,7 +30,7 @@ Run `docker-compose logs` to check container logs.
 ### Grafana Setup
 
 Grafana might need permission to write to the mounted directory for it's data.
-Run `sudo chown -R 472:472 /tmp/grafana/` where `/tmp/grafana` is the default directory where data is stored on the host machine.
+Run `sudo chown -R 472:472 /var/lib/grafana/` where `/var/lib/grafana` is the default directory where data is stored on the host machine.
 
 Once the container processes have started, you can access the Grafana dashboard at http://localhost:3000 .
 
