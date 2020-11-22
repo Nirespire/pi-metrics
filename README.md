@@ -1,4 +1,4 @@
-# Pi Metrics 🥧
+# Pi Metrics 🥧📊
 
 Simple system metrics collection and monitoring using [InfuxDB](https://www.influxdata.com/), [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/), and [Grafana](https://grafana.com/) running in [Docker](https://www.docker.com/) using [Docker Compose](https://docs.docker.com/compose/).
 
